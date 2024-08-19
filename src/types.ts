@@ -10,7 +10,8 @@ export type User = {
 }
 
 
-type MenuItem = {
+export type MenuItemType = {
+ 
     name : string;
     price : number
 }
@@ -26,7 +27,7 @@ export type Restaurant = {
     deliveryPrice: number;
     estimatedDeliveryTime: number;
     cuisines: string[];
-    MenuItems: MenuItem[];
+    MenuItems: MenuItemType[];
     imageUrl : string;
 
 }
