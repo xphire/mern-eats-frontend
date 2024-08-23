@@ -13,7 +13,7 @@ export const useGetRestaurant = (id? : string) => {
 
          if(!response.ok){
 
-            throw new Error("failed to get restaurants")
+            throw new Error("failed to get restaurant")
 
          }
 
