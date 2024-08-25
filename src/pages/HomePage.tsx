@@ -21,7 +21,7 @@ const HomePage = () => {
                     Tuck into a takeaway today
                 </h1>
                 <span className="txt-xl">Food is just a click away</span>
-                <SearchBar placeHolder='Search By City or Town' onSubmit={handleSearchSubmit}/>
+                <SearchBar placeHolder='Search By City or Town' onSubmit={handleSearchSubmit} searchQuery=''/>
         </div>
         <div className="grid md:grid-cols-2 gap-5">
             <img src={landingImage} alt="" />

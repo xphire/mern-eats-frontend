@@ -19,6 +19,16 @@ type CheckoutSessionRequest = {
      }[]
 }
 
+
+type OrderFetchResult = {
+    data : Order[],
+    pagination : {
+        total : number;
+        page : number;
+        pages : number
+    }
+}
+
 const API_BASE_URL =  import.meta.env.VITE_API_BASE_URL
 
 export const useCreateCheckoutSession = () => {
@@ -60,15 +70,15 @@ export const useCreateCheckoutSession = () => {
 }
 
 
-export const useGetMyOrders = () => {
+export const useGetMyOrders = (page = 1) => {
 
     const {getAccessTokenSilently} = useAuth0()
 
-    const getMyOrdersRequest = async () : Promise<Order[]> => {
+    const getMyOrdersRequest = async () : Promise<OrderFetchResult> => {
 
         const accessToken = await getAccessTokenSilently()
 
-        const response = await fetch(`${API_BASE_URL}/api/v1/orders/my-orders`,
+        const response = await fetch(`${API_BASE_URL}/api/v1/orders/my-orders?page=${page}`,
             {
                 headers : {
                     Authorization : `Bearer ${accessToken}`
@@ -81,9 +91,9 @@ export const useGetMyOrders = () => {
         return response.json()
     }
 
-    const {data : orders, isLoading } = useQuery("fetchMyOrders", getMyOrdersRequest, {refetchInterval : 5000})
+    const {data : orders, isLoading , refetch } = useQuery("fetchMyOrders", getMyOrdersRequest, {refetchInterval : 500000})
 
 
-    return {orders, isLoading}
+    return {orders, isLoading,refetch}
 
 }
