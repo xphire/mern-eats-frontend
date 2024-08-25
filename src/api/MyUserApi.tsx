@@ -84,7 +84,7 @@ export const useUpdateMyUser = () => {
     }
 
     if (error){
-        toast.success(error.toString())
+        toast.error(error.toString())
         reset()
     }
     
