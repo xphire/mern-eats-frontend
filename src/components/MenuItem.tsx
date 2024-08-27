@@ -17,7 +17,7 @@ const MenuItem = ({menuItem, addToCart, cart} : Props) => {
   const inCart = cart.map(item => item.name).includes(menuItem.name)
 
   return (
-    <Card className="cursor-pointer flex justify-between" >
+    <Card className="flex justify-between flex-col md:flex-row" >
 
         <div>
 
@@ -30,9 +30,9 @@ const MenuItem = ({menuItem, addToCart, cart} : Props) => {
 
         </div>
 
-        <div className="flex flex-col justify-center items-center mr-10">
+        <div className="p-5">
 
-          <Button className="bg-green-500 shadow-lg hover:bg-slate-300 hover:text-black" onClick={addToCart}>
+          <Button className="bg-green-500 shadow-lg hover:bg-slate-300 hover:text-black cursor-pointer" onClick={addToCart}>
             {inCart ? "Add More To Order" : "Add To Order"}
           </Button>
         
